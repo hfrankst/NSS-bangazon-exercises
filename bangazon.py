@@ -48,8 +48,18 @@ class Department(object):
 
     @employee_count.setter
     def employee_count(self, count):
-            self.__employee_count = count
+        self.__employee_count = count
        
+
+    def get_budget(self, budget=3000):
+        
+        try:
+            return self.budget
+        except AttributeError:
+            self.budget = budget
+            return self.budget
+
+
 
 class HumanResources(Department):
     """Class for representing Human Resources department
@@ -78,6 +88,12 @@ class HumanResources(Department):
         """
         return self.policies
  
+    def get_budget(self, budget):
+        """Gets the budget from the department
+        """
+
+        self.budget = super().get_budget() + 1500
+        return self.budget
 
 class InformationTechonolgy(Department):
     """Class for representing IT department
@@ -105,6 +121,13 @@ class InformationTechonolgy(Department):
         """
         return self.programs
 
+    def get_budget(self, budget):
+        """Gets the budget from the department
+        """
+
+        self.budget = super().get_budget() + 2000
+        return self.budget
+
 
 class Marketing(Department):
     """Class for representing Marketing department
@@ -131,6 +154,12 @@ class Marketing(Department):
 
         return self.campaigns
 
+    def get_budget(self, budget):
+        """Gets the budget from the department
+        """
+
+        self.budget = super().get_budget() + 5400
+        return self.budget
 
 class Sales(Department):
     """Class for representing the Sales department
@@ -156,6 +185,12 @@ class Sales(Department):
 
         return self.orders 
 
+    def get_budget(self, budget):
+        """Gets the budget from the department
+        """
+
+        self.budget = super().get_budget() + 3500
+        return self.budget
 
 
 #instances and stuff for the HR department
@@ -196,3 +231,13 @@ sales = Sales('Sales', 'James', 8)
 # print('--------------------------\n')
 # sales.add_order('SPA', 'Single Page Application')
 # print("The sales department's orders: ", sales.get_orders())
+
+#Checking the department's budget
+print('---------HR BUDGET---------------')
+print(hr_department.get_budget(500))
+print('---------IT BUDGET---------------')
+print(it.get_budget(700))
+print('---------MARKETING BUDGET--------')
+print(market.get_budget(800))
+print('---------SALES BUDGET------------')
+print(sales.get_budget(950))
