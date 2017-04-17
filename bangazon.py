@@ -76,6 +76,7 @@ class HumanResources(Department):
         self.supervisor = supervisor
         self.employee_count = employee_count
 
+
     def add_policy(self, policy_name, policy_text):
         """Adds a policy, as a tuple, to the set of policies
 
@@ -222,16 +223,83 @@ class Employee:
                 print("{} left with {} to go to lunch.".format(self.full_name, lunch_buddies))
         return restaurant_of_choice
 
+class FullTime:
+    """Describes the attributes of full time employee
+    """
+    def __init__(self):
+        self.hours_per_week = 40
+
+class PartTime:
+    """Describes the attributes of a part time employee
+    """
+    def __init__(self):
+        self.hours_per_week = 24
+
+class AccessCard:
+    """Allows for an access card to be added to departments
+    """
+    def __init__(self):
+        self.access_card = False
+
+class HRPersonnel(Employee, FullTime, AccessCard):
+    """builds the class for the HR employees
+    """
+    def __init__(self, first_name, last_name):
+        super().__init__(first_name, last_name)
+        FullTime.__init__(self)
+        AccessCard.__init__(self)
+
+        self.access_card = True
+
+class ITPersonnel(Employee, FullTime, AccessCard):
+    """Builds the class for the IT employees
+    """
+    def __init__(self, first_name, last_name):
+        super().__init__(first_name, last_name)
+        FullTime.__init__(self)
+        AccessCard.__init__(self)
+
+        self.access_card = True
+
+class MarketingPersonnel(Employee, FullTime, AccessCard):
+    """Builds the class for the Marketing employee
+    """
+    def __init__(self, first_name, last_name):
+        super().__init__(first_name, last_name)
+        FullTime.__init__(self)
+        AccessCard.__init__(self)
+
+class SalesPersonnel(Employee, PartTime, AccessCard):
+    """Builds the class for the Sales employees 
+    """
+    def __init__(self, first_name, last_name):
+        super().__init__(first_name, last_name)
+        PartTime.__init__(self)
+        AccessCard.__init__(self)
+
+
+#Employees with different attributes that are inherited from different classes 
+Adam = HRPersonnel('Adam', 'Meyers')
+print(Adam.full_name)
+Sarah = ITPersonnel('Sarah', 'Palin')
+print(Sarah.full_name)
+Timothy = MarketingPersonnel('Timothy', 'Leary')
+print(Timothy.full_name)
+Chantel = SalesPersonnel('Chantel', 'Johnson')
+print(Chantel.full_name)
+
 
 ######################################################################################
 ###############################Printing Out Info######################################
 ######################################################################################
+
+#instances of the Employee class
 e = Employee('Harper', 'Frankstone')
 b = Employee('Bob', 'Sagat')
 c = Employee('Claire', 'Holt')
 d = Employee('David', 'Thomas')
 # print(e.full_name)
-e.eat('salads', [b, c, d])
+# e.eat('salads', [b, c, d])
 
 
 
