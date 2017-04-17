@@ -1,3 +1,5 @@
+import random
+
 class Department(object):
     """Parent class for all departments"""
 
@@ -193,6 +195,46 @@ class Sales(Department):
         return self.budget
 
 
+class Employee:
+    """Building an employee
+
+    Methods: eat()
+    """
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name 
+        self.last_name = last_name
+        self.full_name = first_name + " " + last_name
+
+
+    def eat(self, food=None, companions=None):
+        restaurants = ["Denny's", "Waffle House", "Baja Burrito", "Vui's Vietnamese", "Wendy's"]
+        restaurant_of_choice = random.choice(restaurants)
+        if food is not None and companions is None:
+            print("{} ate {} at the office for lunch...sad".format(self.full_name, food))
+        if companions is not None:
+            people_list = list()
+            for companion in companions:
+                people_list.append(companion.first_name)
+            lunch_buddies = ', '.join(people_list)
+            if food is not None:
+                print("{} joined {} for {} at {} for lunch.".format(self.full_name, lunch_buddies, food, restaurant_of_choice))
+            else:
+                print("{} left with {} to go to lunch.".format(self.full_name, lunch_buddies))
+        return restaurant_of_choice
+
+
+######################################################################################
+###############################Printing Out Info######################################
+######################################################################################
+e = Employee('Harper', 'Frankstone')
+b = Employee('Bob', 'Sagat')
+c = Employee('Claire', 'Holt')
+d = Employee('David', 'Thomas')
+# print(e.full_name)
+e.eat('salads', [b, c, d])
+
+
+
 #instances and stuff for the HR department
 hr_department = HumanResources('Human Resources', 'Meg', 9)
 # hr_department.add_policy('E.L.E.', 'Everybody Love Everybody')
@@ -233,11 +275,11 @@ sales = Sales('Sales', 'James', 8)
 # print("The sales department's orders: ", sales.get_orders())
 
 #Checking the department's budget
-print('---------HR BUDGET---------------')
-print(hr_department.get_budget(500))
-print('---------IT BUDGET---------------')
-print(it.get_budget(700))
-print('---------MARKETING BUDGET--------')
-print(market.get_budget(800))
-print('---------SALES BUDGET------------')
-print(sales.get_budget(950))
+# print('---------HR BUDGET---------------')
+# print(hr_department.get_budget(500))
+# print('---------IT BUDGET---------------')
+# print(it.get_budget(700))
+# print('---------MARKETING BUDGET--------')
+# print(market.get_budget(800))
+# print('---------SALES BUDGET------------')
+# print(sales.get_budget(950))
