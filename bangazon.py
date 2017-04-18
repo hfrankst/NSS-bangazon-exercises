@@ -6,6 +6,18 @@ class Department(object):
     def __init__(self):
         self.employees = set()
     
+    def add_employee(self, employee):
+        self.employees.add(employee)
+
+    def remove_employee(self, employee):
+        try:
+            self.employees.remove(employee)
+        except KeyError:
+            return "That person is not an employee"
+
+    def get_employees(self):
+        return self.employees 
+
     @property
     def name(self):
         try:
@@ -278,15 +290,6 @@ class SalesPersonnel(Employee, PartTime, AccessCard):
         AccessCard.__init__(self)
 
 
-#Employees with different attributes that are inherited from different classes 
-Adam = HRPersonnel('Adam', 'Meyers')
-print(Adam.full_name)
-Sarah = ITPersonnel('Sarah', 'Palin')
-print(Sarah.full_name)
-Timothy = MarketingPersonnel('Timothy', 'Leary')
-print(Timothy.full_name)
-Chantel = SalesPersonnel('Chantel', 'Johnson')
-print(Chantel.full_name)
 
 
 ######################################################################################
@@ -299,7 +302,7 @@ b = Employee('Bob', 'Sagat')
 c = Employee('Claire', 'Holt')
 d = Employee('David', 'Thomas')
 # print(e.full_name)
-# e.eat('salads', [b, c, d])
+e.eat('salads', [b, c, d])
 
 
 
@@ -351,3 +354,48 @@ sales = Sales('Sales', 'James', 8)
 # print(market.get_budget(800))
 # print('---------SALES BUDGET------------')
 # print(sales.get_budget(950))
+
+
+#Employees with different attributes that are inherited from different classes 
+Adam = HRPersonnel('Adam', 'Meyers')
+Harper = HRPersonnel('Harper', 'Frankstone')
+# print(Adam.full_name)
+Sarah = ITPersonnel('Sarah', 'Palin')
+Blaise = ITPersonnel('Blaise', 'Roberts')
+# print(Sarah.full_name)
+Timothy = MarketingPersonnel('Timothy', 'Leary')
+Meg = MarketingPersonnel('Meg', 'Ducharme')
+# print(Timothy.full_name)
+Chantel = SalesPersonnel('Chantel', 'Johnson')
+# print(Chantel.full_name)
+
+
+hr_department.add_employee(Adam)
+hr_department.add_employee(Harper)
+it.add_employee(Sarah)
+it.add_employee(Blaise)
+market.add_employee(Timothy)
+market.add_employee(Meg)
+sales.add_employee(Chantel)
+
+print('-------------EXERCISE 5---------------')
+print('Department: ', hr_department.name)
+employee_set_hr = hr_department.get_employees()
+for each in employee_set_hr:
+    print("    ", each.full_name)
+
+print('Department: ', it.name)
+employee_set_it = it.get_employees()
+for each in employee_set_it:
+    print("    ",each.full_name)
+
+print('Department: ', market.name)
+employee_set_marketing = market.get_employees()
+for each in employee_set_marketing:
+    print("    ",each.full_name)
+
+print('Department: ', sales.name)
+employee_set_sales = sales.get_employees()
+for each in employee_set_sales:
+    print("    ",each.full_name)
+
