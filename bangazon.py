@@ -295,8 +295,27 @@ class SalesPersonnel(Employee, PartTime, AccessCard):
 ######################################################################################
 ###############################Printing Out Info######################################
 ######################################################################################
+hr_department = HumanResources('Human Resources', 'Meg', 9)
+it = InformationTechonolgy('Information Technologies', 'Meg', 10)
+market = Marketing('Marketing', 'Emily', 5)
+sales = Sales('Sales', 'James', 8)
+
+#department names
+print('------------EXERCISE 1----------')
+print(hr_department.name)
+print(it.name)
+print(market.name)
+print(sales.name)
+
+#department budgets
+print('------------EXERCISE 2----------')
+print("HR BUDGET: ", hr_department.get_budget(500))
+print('IT BUDGET: ', it.get_budget(700))
+print("MARKETING BUDGET: ", market.get_budget(800))
+print("SALES BUDGET: ", sales.get_budget(950))
 
 #instances of the Employee class
+print('-----------EXERCISE 3-----------')
 e = Employee('Harper', 'Frankstone')
 b = Employee('Bob', 'Sagat')
 c = Employee('Claire', 'Holt')
@@ -307,17 +326,13 @@ e.eat('salads', [b, c, d])
 
 
 #instances and stuff for the HR department
-hr_department = HumanResources('Human Resources', 'Meg', 9)
 # hr_department.add_policy('E.L.E.', 'Everybody Love Everybody')
-# print(hr_department.name)
 # print('Department Supervisor: ', hr_department.supervisor)
 # print("The number of HR employees: ",hr_department.employee_count)
 # print('------------------------\n')
 # print("Company Policy: ",hr_department.get_policy())
 
 #instances and stuff for the IT department
-it = InformationTechonolgy('Information Technologies', 'Meg', 10)
-# print(it.name)
 # print('Department Supervisor: ', it.supervisor)
 # it.add_program('Really Important Influential Shit', 'It does really cool shit and shit')
 # print('--------------------------\n')
@@ -327,8 +342,6 @@ it = InformationTechonolgy('Information Technologies', 'Meg', 10)
 # print('--------------------------\n')
 
 #instance and things for the Marketing department
-market = Marketing('Marketing', 'Emily', 5)
-# print(market.name)
 # print('--------------------------\n')
 # print('Department Supervisor: ', market.supervisor)
 # market.add_campaign('Selling this Product', 'All the people')
@@ -337,25 +350,15 @@ market = Marketing('Marketing', 'Emily', 5)
 # print('--------------------------\n')
 
 #instance and things for the Sales department
-sales = Sales('Sales', 'James', 8)
-# print(sales.name)
 # print('--------------------------\n')
 # print('Department Supervisor: ', sales.supervisor)
 # print('--------------------------\n')
 # sales.add_order('SPA', 'Single Page Application')
 # print("The sales department's orders: ", sales.get_orders())
 
-#Checking the department's budget
-# print('---------HR BUDGET---------------')
-# print(hr_department.get_budget(500))
-# print('---------IT BUDGET---------------')
-# print(it.get_budget(700))
-# print('---------MARKETING BUDGET--------')
-# print(market.get_budget(800))
-# print('---------SALES BUDGET------------')
-# print(sales.get_budget(950))
 
 
+print('---------------EXERCISE 4-------------')
 #Employees with different attributes that are inherited from different classes 
 Adam = HRPersonnel('Adam', 'Meyers')
 Harper = HRPersonnel('Harper', 'Frankstone')
